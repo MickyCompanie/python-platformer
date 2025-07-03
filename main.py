@@ -14,6 +14,26 @@ FPS = 60
 PLAYER_VEL = 5
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 
+class Player(pygame.sprite.Sprite):
+    COLOR = (255, 0, 0)
+
+    def __init__(self, x, y, width, height):
+        self.rect = pygame.Rect(x, y, width, height)
+        self.x_vel = 0
+        self.y_vel = 0
+        self.mask = None 
+
+    def move(self, dx, dy):
+        self.rect.x += dx
+        self.rect.y += dy 
+
+    def move_left(self, vel):
+        self.x_vel = -vel
+
+    def move_right(self, vel):
+        self.x_vel = vel
+
+
 def get_background(name):
     #important to get file from where the file is
     image = pygame.image.load(join("assets", "Background", name))
